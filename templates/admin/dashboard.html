@@ -1,0 +1,31 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<h2>Estatísticas do Sistema Jurídico</h2>
+
+<div style="display:flex; gap:30px; margin-top:20px;">
+
+<div style="background:#f5f5f5;padding:20px;border-radius:10px;">
+<h3>Total de Alunos</h3>
+<h1>{{ total_alunos }}</h1>
+</div>
+
+<div style="background:#f5f5f5;padding:20px;border-radius:10px;">
+<h3>Total de Plantões</h3>
+<h1>{{ total_plantoes }}</h1>
+</div>
+
+<div style="background:#f5f5f5;padding:20px;border-radius:10px;">
+<h3>Plantões Finalizados</h3>
+<h1>{{ plantoes_finalizados }}</h1>
+</div>
+
+<div style="background:#f5f5f5;padding:20px;border-radius:10px;">
+<h3>Plantões Avaliados</h3>
+<h1>{{ plantoes_avaliados }}</h1>
+</div>
+
+</div>
+
+{% endblock %}

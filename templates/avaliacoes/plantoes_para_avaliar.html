@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Plantões para Avaliação</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Aluno</th>
+<th>Plantão</th>
+<th>Data</th>
+<th>Ação</th>
+</tr>
+
+{% for plantao in plantoes %}
+
+<tr>
+
+<td>{{ plantao.aluno.nome }}</td>
+
+<td>Plantão {{ plantao.numero_plantao }}</td>
+
+<td>{{ plantao.data_entrada }}</td>
+
+<td>
+
+<a href="/admin/avaliacoes/avaliacao/add/?plantao={{ plantao.id }}">
+Avaliar
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="4">Nenhum plantão pendente</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

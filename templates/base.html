@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sistema Jurídico</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    margin:0;
+}
+
+.menu{
+    background:#1e3a5f;
+    padding:15px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin-right:20px;
+    font-weight:bold;
+}
+
+.container{
+    padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="menu">
+
+<a href="/dashboard/">Dashboard</a>
+
+{% if user.perfil == "aluno" %}
+<a href="/plantoes/meus/">Meus Plantões</a>
+<a href="/plantoes/novo/">Novo Plantão</a>
+{% endif %}
+
+{% if user.perfil == "avaliador" %}
+<a href="/admin/avaliacoes/avaliacao/">Avaliar Plantões</a>
+{% endif %}
+
+{% if user.perfil == "secretaria" %}
+<a href="/admin/alunos/aluno/">Alunos</a>
+<a href="/admin/avaliacoes/avaliacao/">Avaliações</a>
+<a href="/dashboard/">Relatórios</a>
+{% endif %}
+
+{% if user.perfil == "supervisor" %}
+<a href="/plantoes/meus/">Plantões</a>
+<a href="/dashboard/">Relatórios</a>
+{% endif %}
+
+{% if user.perfil == "admin" %}
+<a href="/admin/">Admin</a>
+{% endif %}
+
+<a href="/admin/logout/">Sair</a>
+
+</div>
+
+<div class="container">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+</html>

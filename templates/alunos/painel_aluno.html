@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Painel do Aluno</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+<th>Plantão</th>
+<th>Status</th>
+<th>Avaliação</th>
+</tr>
+
+{% for plantao in plantoes %}
+
+<tr>
+
+<td>Plantão {{ plantao.numero_plantao }}</td>
+
+<td>{{ plantao.status }}</td>
+
+<td>{{ plantao.status_avaliacao }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Meus Plantões</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>Plantão</th>
+    <th>Status</th>
+    <th>Avaliação</th>
+    <th>Ação</th>
+</tr>
+
+{% for plantao in plantoes %}
+
+<tr>
+
+<td>Plantão {{ plantao.numero_plantao }}</td>
+
+<td>
+
+{% if plantao.status == "finalizado" %}
+<span style="color:green; font-weight:bold;">✔ Finalizado</span>
+
+{% elif plantao.status == "aberto" %}
+<span style="color:orange; font-weight:bold;">⏳ Em andamento</span>
+
+{% else %}
+<span style="color:gray;">{{ plantao.status }}</span>
+{% endif %}
+
+</td>
+
+<td>
+
+{% if plantao.status_avaliacao == "avaliado" %}
+<span style="color:green;">✔ Avaliado</span>
+
+{% elif plantao.status_avaliacao == "pendente" %}
+<span style="color:red;">⏳ Pendente</span>
+
+{% else %}
+{{ plantao.status_avaliacao }}
+{% endif %}
+
+</td>
+
+<td>
+
+{% if plantao.status == "aberto" %}
+
+<a href="{% url 'editar_plantao' plantao.id %}">✏️ Editar</a>
+
+|
+
+<a href="{% url 'finalizar_plantao' plantao.id %}"
+onclick="return confirm('Deseja finalizar este plantão?')">
+✔ Finalizar
+</a>
+
+{% else %}
+
+🔒 Bloqueado
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+<td colspan="4">Nenhum plantão cadastrado</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'novo_plantao' %}">➕ Novo Plantão</a>
+
+{% endblock %}
